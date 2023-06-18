@@ -1,15 +1,20 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
 # Run the Prettier check
 echo "Running Prettier check..."
 npm run check-format
 
 # If the Prettier check fails, exit the script with an error
 if [ $? -ne 0 ]; then
-    echo "Prettier check failed. Please correct any style errors and try again."
+    echo "${RED}Prettier check failed. Please correct any style errors and try again.${NC}"
     exit 1
 fi
+echo "${GREEN}Prettier check passed.${NC}"
 
 # Run the ESLint check
 echo "Running ESLint check..."
@@ -17,9 +22,10 @@ npm run check-lint
 
 # If the ESLint check fails, exit the script with an error
 if [ $? -ne 0 ]; then
-    echo "ESLint check failed. Please correct any lint errors and try again."
+    echo "${RED}ESLint check failed. Please correct any lint errors and try again.${NC}"
     exit 1
 fi
+echo "${GREEN}ESLint check passed.${NC}"
 
 # Run the TypeScript check
 echo "Running TypeScript check..."
@@ -27,9 +33,10 @@ npm run check-types
 
 # If the TypeScript check fails, exit the script with an error
 if [ $? -ne 0 ]; then
-    echo "TypeScript check failed. Please correct any type errors and try again."
+    echo "${RED}TypeScript check failed. Please correct any type errors and try again.${NC}"
     exit 1
 fi
+echo "${GREEN}TypeScript check passed.${NC}"
 
 # If everything passes, build the project
 echo "All checks passed. Building the project..."
@@ -37,8 +44,8 @@ npm run build
 
 # If the build fails, exit the script with an error
 if [ $? -ne 0 ]; then
-    echo "Build failed. Please correct any build errors and try again."
+    echo "${RED}Build failed. Please correct any build errors and try again.${NC}"
     exit 1
 fi
 
-echo "Pre-commit checks and build completed successfully. Proceeding with commit."
+echo "${GREEN}Pre-commit checks and build completed successfully. Proceeding with commit.${NC}"
