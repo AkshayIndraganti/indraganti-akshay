@@ -1,0 +1,44 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run the Prettier check
+echo "Running Prettier check..."
+npm run check-format
+
+# If the Prettier check fails, exit the script with an error
+if [ $? -ne 0 ]; then
+    echo "Prettier check failed. Please correct any style errors and try again."
+    exit 1
+fi
+
+# Run the ESLint check
+echo "Running ESLint check..."
+npm run check-lint
+
+# If the ESLint check fails, exit the script with an error
+if [ $? -ne 0 ]; then
+    echo "ESLint check failed. Please correct any lint errors and try again."
+    exit 1
+fi
+
+# Run the TypeScript check
+echo "Running TypeScript check..."
+npm run check-types
+
+# If the TypeScript check fails, exit the script with an error
+if [ $? -ne 0 ]; then
+    echo "TypeScript check failed. Please correct any type errors and try again."
+    exit 1
+fi
+
+# If everything passes, build the project
+echo "All checks passed. Building the project..."
+npm run build
+
+# If the build fails, exit the script with an error
+if [ $? -ne 0 ]; then
+    echo "Build failed. Please correct any build errors and try again."
+    exit 1
+fi
+
+echo "Pre-commit checks and build completed successfully. Proceeding with commit."

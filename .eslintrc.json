@@ -1,3 +1,27 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "prettier"
+  ],
+  "parserOptions": {
+    "project": [
+      "./tsconfig.json",
+      "./tsconfig.next.config.json"
+    ],
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {},
+  "settings": {
+    "react": {
+      "version": "latest"
+    }
+  }
 }
