@@ -1,9 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-NC='\033[0m' # No Color
+# Set up colors using tput
+GREEN="$(tput setaf 2)"
+RED="$(tput setaf 1)"
+NC="$(tput sgr0)" # No Color
 
 # Run the Prettier check
 echo "Running Prettier check..."
