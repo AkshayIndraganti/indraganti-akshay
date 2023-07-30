@@ -1,9 +1,8 @@
-import React from 'react';
+'use client';
 
-export default function Home() {
-  return (
-    <div>
-      <p>Hello</p>
-    </div>
-  );
-}
+import React from 'react';
+import Landing from '../../Components/Landing/page';
+
+const page = () => <Landing />;
+
+export default page;

@@ -18,7 +18,39 @@
       "jsx": true
     }
   },
-  "rules": {},
+  "rules": {
+    "@typescript-eslint/consistent-type-definitions": [
+      "error",
+      "interface"
+    ],
+    "react/no-unescaped-entities": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "no-unused-vars": "warn",
+    "prefer-const": "error",
+    "arrow-body-style": [
+      "error",
+      "as-needed",
+      { "requireReturnForObjectLiteral": false }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.styled.ts", "*.styled.tsx"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    }
+  ],
   "settings": {
     "react": {
       "version": "latest"
